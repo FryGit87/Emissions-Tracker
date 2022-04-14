@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.hero-img > img{
+    height: 70vh;
+}
+
+.title-page-header{
+    padding: 30px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+body{
+    margin: 0;
+    padding: 0
+}
