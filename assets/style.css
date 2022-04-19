@@ -15,9 +15,24 @@
     padding: 30px;
     font-size: 28px;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 body{
     margin: 0;
     padding: 0
+}
+
+button {
+    background-color: rgb(60, 168, 21);
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+    border-radius: 5px;
 }
