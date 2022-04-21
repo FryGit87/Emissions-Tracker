@@ -50,7 +50,7 @@ async function getEndCoords() {
 (async () => {
   var startCoords = await getStartCoords();
   var endCoords = await getEndCoords();
-  getDirections(startCoords, endCoords);
+  var tripDist = await getDirections(startCoords, endCoords);
 })();
 
 //PRODUCES A DISTANCE FROM THE COORDS
@@ -61,4 +61,5 @@ async function getDirections(start, end) {
   console.log(data.features[0].properties.segments[0].distance);
   let distance = data.features[0].properties.segments[0].distance;
   document.getElementById("dist").textContent = distance;
+  return distance;
 }
