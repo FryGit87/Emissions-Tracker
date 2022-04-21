@@ -45,19 +45,17 @@ function getApi() {
     .then(function (response) {
       return response.json();
     })
-    .then(function (data) {
+    .then(function emission (data) {
       console.log(data);
       console.log(data.co2e);
       var getEmissions = data.co2e;
       resultEl.textContent = getEmissions + ' Kg CO2-E';
       console.log(distanceInputEl.value);
-     // return getEmissions;
-
-      //renderResponse()
+     return getEmissions;
     });
 
 
-    //var getEmissions = data.co2e;
+    var getEmissions = emission();
     //resultEl.textContent = getEmissions + ' Kg CO2-E';
 
 
