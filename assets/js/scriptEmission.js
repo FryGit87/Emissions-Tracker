@@ -4,19 +4,12 @@ var fetchButton = document.getElementById('fetch-button');
 //var NumDistanceInpitEl = +distanceInputEl.value;
 var resultEl = document.getElementById('result');
 
-console.log (resultEl);
-console.log(tableBody);
-console.log(fetchButton);
+//console.log (resultEl);
+//console.log(tableBody);
+//console.log(fetchButton);
 //console.log(distanceInputEl);
 //console.log(distanceInputEl.value);
 //console.log(NumDistanceInpitEl);
-
-
-
-// curl --request POST \
-// --url https://beta3.api.climatiq.io/estimate \
-// --header 'Authorization: Bearer YOUR_API_KEY' \
-
 
 
 function getApi() {
@@ -55,11 +48,33 @@ function getApi() {
     .then(function (data) {
       console.log(data);
       console.log(data.co2e);
-      resultEl.textContent = data.co2e + 'kg';
+      var getEmissions = data.co2e;
+      resultEl.textContent = getEmissions + ' Kg CO2-E';
       console.log(distanceInputEl.value);
+     // return getEmissions;
 
       //renderResponse()
     });
+
+
+    //var getEmissions = data.co2e;
+    //resultEl.textContent = getEmissions + ' Kg CO2-E';
+
+
+    //local storage settings
+    var tripSummary = JSON.parse(localStorage.getItem("trips"));
+    console.log(tripSummary);
+
+    var trips = {
+      vehicle: "Standard Car",
+      distance: distanceInputEl.value.trim(),
+      emissions: getEmissions + ' Kg CO2-E'
+      };
+    
+    console.log(trips);
+      
+    localStorage.setItem("trips",JSON.stringify(trips));
+
 }
 
 // function renderResponse () {
