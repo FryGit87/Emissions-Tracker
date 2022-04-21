@@ -1,0 +1,63 @@
+    .pick-up {
+        margin-top: 80px;
+        text-align: center;
+    }
+    
+    .drop-off {
+        margin-top: 50px;
+        text-align: center;
+    }
+    
+    input {
+        width: 400px;
+        height: 80px;
+    }
+    
+    input[type=text] {
+        text-align: center;
+        font-size: 30px;
+    }
+    
+    h2 {
+        text-align: center;
+        margin-top: 80px;
+        font-size: 50px;
+    }
+    
+    .icon {
+        text-align: center;
+    }
+    
+    .btn {
+        background-color: rgb(2, 160, 2);
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+    
+    .btn:hover {
+        background-color: rgb(95, 255, 95);
+    }
+    
+    #btn1 {
+        background-color: rgb(2, 160, 2);
+        border-radius: 3px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 50px;
+        margin-top: 50px;
+    }
+    
+    #btn1:hover {
+        background-color: rgb(95, 255, 95);
+    }
+    
+    .results {
+        text-align: center;
+    }
