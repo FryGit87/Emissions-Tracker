@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Welcome</title>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/4fcb715ebc.js" crossorigin="anonymous"></script>
+    <link href="dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <style>
+            .map {
+                height: 400px;
+                width: 100%;
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+        <title>OpenLayers example</title>
+        </head>
+
+        <body>
+            <h2>Welcome</h2>
+            <div id="map" class="map"></div>
+            <script type="text/javascript">
+                var map = new ol.Map({
+                    target: 'map',
+                    layers: [
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM()
+                        })
+                    ],
+                    view: new ol.View({
+                        center: ol.proj.fromLonLat([37.41, 8.82]),
+                        zoom: 4
+                    })
+                });
+            </script>
+            <!--blank div for the map-->
+    </div>
+
+    <div class="pick-up">
+        <!--div for pick up-->
+        <form id="search-form" class="form w-100">
+            <input id="search-input" class="form-input w-100" type="text" placeholder="Location!">
+
+    </div>
+
+    <div class="drop-off">
+        <!--div for destination choice-->
+        <form id="search-form" class="form w-100">
+            <input id="search-input" class="form-input w-100" type="text" placeholder="Destination!">
+
+    </div>
+
+    <h2>Select choice of transportation</h2>
+    <!--div for icons clickable and hover-->
+    <div class="icon">
+        <button class="btn"><i class="fa-solid fa-car fa-5x"></i></button>
+        <button class="btn"><i class="fa-solid fa-person-walking fa-5x"></i></button>
+        <button class="btn"><i class="fa-solid fa-bus fa-5x"></i></button>
+        <button class="btn"><i class="fa-solid fa-bicycle fa-5x"></i></button>
+    </div>
+
+    <!--results-->
+
+    <div class="results">
+        <button id="btn1">Results</button>
+    </div>
+    <!--history button-->
+
+    </body>
+
+</html>
