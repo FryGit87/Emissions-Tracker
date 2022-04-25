@@ -17,7 +17,8 @@
                 width: 100%;
             }
         </style>
-        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
         <title>OpenLayers example</title>
         </head>
 
@@ -43,16 +44,11 @@
 
     <div class="pick-up">
         <!--div for pick up-->
-        <form id="search-form" class="form w-100">
-            <input id="search-input" class="form-input w-100" type="text" placeholder="Location!">
+        <form id="search-form-start" class="form w-100">
+            <input id="start-input" class="form-input w-100" type="text" placeholder="Location!">
 
-    </div>
-
-    <div class="drop-off">
-        <!--div for destination choice-->
-        <form id="search-form" class="form w-100">
-            <input id="search-input" class="form-input w-100" type="text" placeholder="Destination!">
-
+            <input id="end-input" class="form-input w-100" type="text" placeholder="Destination!">
+        </form>
     </div>
 
     <h2>Select choice of transportation</h2>
@@ -67,10 +63,13 @@
     <!--results-->
 
     <div class="results">
+        <div id="calulationShown"></div>
         <button id="btn1">Results</button>
+
+
     </div>
     <!--history button-->
-
-    </body>
+    <script src="./API-test/bothapicalls.js"></script>
+</body>
 
 </html>
