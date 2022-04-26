@@ -1,13 +1,35 @@
 // --------------------------------------------------------------------------------------------------
 //----------------------------------------------MY CODE----------------------------------------------
 // --------------------------------------------------------------------------------------------------
+let resultEl = document.getElementById("carbonEmission");
+//let fetchButton = document.getElementById("btn1");
+let fetchButton = document.querySelector('.results', '#btn1');
+let locationInputEl = document.getElementById('location');
+let destinationInputEl = document.getElementById('destination');
 
-let resultEl = document.getElementById("carbon");
+console.log(fetchButton.innerHTML);
+console.log(resultEl);
+console.log(locationInputEl);
+console.log(destinationInputEl);
 
+
+
+//document.querySelector("#btn1").innerHTML = fetchButton;
+//console.log(fetchButton);
+let transferEmissions = "";
 let apiKey = "5b3ce3597851110001cf624887417583949f471aae818ebeb12df5db";
 let transportType = "driving-car";
 let startPoint = "";
 let endPoint = "";
+
+function readInput (){
+console.log("enter readInput");
+
+
+};
+
+
+
 
 let startInput = "Sydney Opera House";
 // let userInputUpdated = text.replace(" ", "%20")
@@ -16,6 +38,7 @@ let endInput = "Sydney Harbour Bridge";
 let endInputUpdated = encodeURI(endInput);
 
 //PRODUCES THE START POINT (LAT/LON)FOR USER
+
 let apiUrlStart = `https://api.openrouteservice.org/geocode/search?api_key=${apiKey}&text=${startInputUpdated}`;
 async function getStartCoords() {
   let response = await fetch(apiUrlStart);
@@ -74,10 +97,12 @@ async function buttonClick() {
   var tripDist = await getDirections(startCoords, endCoords);
   var calculateCarbon = getApi(tripDist);
   console.log(calculateCarbon);
+ 
+ 
   function getApi() {
     // fetch request gets a list of all the repos for the node.js organization
     var requestUrl = "https://beta3.api.climatiq.io/estimate";
-    var distanceInputEl = tripDist;
+    //var distanceInputEl = tripDist;
     var NumDistanceInpitEl = +tripDist;
 
     var data = {
@@ -107,22 +132,29 @@ async function buttonClick() {
         console.log(data);
         console.log(data.co2e);
         var getEmissions = data.co2e;
+        console.log(getEmissions);
         resultEl.textContent = getEmissions + " Kg CO2-E";
-        console.log(distanceInputEl.value);
-        return getEmissions;
+        transferEmissions = getEmissions + " Kg CO2-E";
+        ////Why global variables cannot be used inside of a then function? 
+
+       // console.log(distanceInputEl.value);
+       // return getEmissions;
       });
 
-    var getEmissions = emission(); //-----------------------------------THIS????  not defined
+   // var getEmissions = emission(); //-----------------------------------THIS????  not defined
     //resultEl.textContent = getEmissions + ' Kg CO2-E';
 
     //local storage settings
     var tripSummary = JSON.parse(localStorage.getItem("trips"));
     console.log(tripSummary);
 
+
+
+
     var trips = {
       vehicle: "Standard Car",
       distance: NumDistanceInpitEl,
-      emissions: getEmissions + " Kg CO2-E",
+      emissions: transferEmissions + " Kg CO2-E"
     };
 
     console.log(trips);
@@ -135,7 +167,10 @@ async function buttonClick() {
 
 //'tripDist' and 'distance' same value but unable to console.log it??????
 // need this value to combine with the emission api zzzz
-buttonClick();
+//buttonClick();
+
+fetchButton.addEventListener ('Click', readInput);
+//document.getElementById("btn1").innerHTML.addEventListener("click", buttonClick);
 
 // --------------------------------------------------------------------------------------------------
 //-----------------------------------------EMISSION API CODE-----------------------------------------
