@@ -7,7 +7,7 @@ let fetchButton = document.querySelector('.results', '#btn1');
 let locationInputEl = document.getElementById('location');
 let destinationInputEl = document.getElementById('destination');
 
-console.log(fetchButton.innerHTML);
+console.log(fetchButton);
 console.log(resultEl);
 console.log(locationInputEl);
 console.log(destinationInputEl);
