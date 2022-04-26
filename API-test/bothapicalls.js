@@ -95,7 +95,8 @@ async function buttonClick() {
   let tripDist = await getDirections(startCoords, endCoords);
   let calculateCarbon = await getEmissions(tripDist);
   console.log(calculateCarbon);
-  document.getElementById("calulationShown").innerHTML = calculateCarbon;
+  document.getElementById("calulationShown").innerHTML = calculateCarbon + 'Kg CO2-E
+';
 }
 
 //PRODUCES A DISTANCE FROM THE COORDS
