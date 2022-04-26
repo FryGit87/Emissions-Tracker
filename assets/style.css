@@ -1,8 +1,0 @@
-@import "node_modules/ol/ol.css";
-
-html, body, #map-container {
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  font-family: sans-serif;
-}
