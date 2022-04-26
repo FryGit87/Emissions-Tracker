@@ -1,8 +1,8 @@
 // default map layer
 let map = L.map('map', {
-    layers: MQ.mapLayer(),
-    center: [-34.925523, 138.604946],
-    zoom: 12
+    layers: MQ.mapLayer(),  //MQ. mapQuest object
+    center: [-34.925523, 138.604946], //center in Adlaide
+    zoom: 13
 });
     
 
@@ -11,8 +11,8 @@ let map = L.map('map', {
         // recreating new map layer after removal
         map = L.map('map', {
             layers: MQ.mapLayer(),
-            center: [35.791188, -78.636755],
-            zoom: 12
+            center: [-34.925523, 138.604946],
+            zoom: 13
         });
         
         var dir = MQ.routing.directions();
@@ -24,19 +24,20 @@ let map = L.map('map', {
             ]
         });
     
+       // create routing layer and marker
 
         CustomRouteLayer = MQ.Routing.RouteLayer.extend({
             createStartMarker: (location) => {
                 var custom_icon;
                 var marker;
 
-                custom_icon = L.icon({
+                custom_icon = L.icon({     //start marker
                     iconUrl: 'img/red.png',
                     iconSize: [20, 29],
                     iconAnchor: [10, 29],
                     popupAnchor: [0, -29]
                 });
-
+                //add the marker to the map
                 marker = L.marker(location.latLng, {icon: custom_icon}).addTo(map);
 
                 return marker;
@@ -46,7 +47,7 @@ let map = L.map('map', {
                 var custom_icon;
                 var marker;
 
-                custom_icon = L.icon({
+                custom_icon = L.icon({   //end marker
                     iconUrl: 'img/blue.png',
                     iconSize: [20, 29],
                     iconAnchor: [10, 29],
@@ -61,7 +62,7 @@ let map = L.map('map', {
         
         map.addLayer(new CustomRouteLayer({
             directions: dir,
-            fitBounds: true
+            fitBounds: true  //move to your directions
         })); 
     }
 
