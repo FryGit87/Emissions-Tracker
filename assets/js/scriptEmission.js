@@ -5,31 +5,6 @@ var getEmissions = "";
 //var trips = [];
 var tripText = "";
 
-let transferEmissions = "";
-let apiKey = "5b3ce3597851110001cf624887417583949f471aae818ebeb12df5db";
-let transportType = "driving-car";
-let startPoint = "";
-let endPoint = "";
-
-
-let startInput = "Sydney Opera House";
-// let userInputUpdated = text.replace(" ", "%20")
-let startInputUpdated = encodeURI(startInput);
-let endInput = "Sydney Harbour Bridge";
-let endInputUpdated = encodeURI(endInput);
-
-//************End of variables declaration********* */
-//************************************************* */
-
-//************BEGININIG OF FUNCTION DECLARATIONS */
-
-function readInput (){
-  console.log("enter readInput");
-  getApi();
-  runGeoApi();
-  };
-  
-
 
 // Function "init" retrieve data and render it to the page on load
 function init() {
@@ -46,30 +21,6 @@ function renderTrips(){
 return;
 };
 
-//GETTING DISTANCE FROM GEOLOCATION API*************************** */
-//PRODUCES THE START POINT (LAT/LON)FOR USER
-
-function runGeoApi (){
-  console.log("Enter async function");
-let apiUrlStart = `https://api.openrouteservice.org/geocode/search?api_key=${apiKey}&text=${startInputUpdated}`;
-console.log(apiUrlStart);
-
-async function getStartCoords() {
-  let response = await fetch(apiUrlStart);
-  let data = await response.json();
-  // console.log(data.features[0].geometry.coordinates[0]);
-  // console.log(data.features[0].geometry.coordinates[1]);
-  let startLatitude = data.features[0].geometry.coordinates[0];
-  let startLongitude = data.features[0].geometry.coordinates[1];
-  document.getElementById("start-lat").textContent = startLatitude;
-  document.getElementById("start-lon").textContent = startLongitude;
-  let startPoint = startLatitude + "," + startLongitude;
-  console.log(startPoint);
-
-  return startPoint;
-}
-};
-//console.log(getStartCoords());
 
 
 //**************************************************************************** */
@@ -159,7 +110,7 @@ return;
 };
 
 
-fetchButton.addEventListener('click', readInput);
+fetchButton.addEventListener('click', getApi);
 
 
 // Calls init to retrieve data and render it to the page on load
