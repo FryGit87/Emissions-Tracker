@@ -1,161 +1,139 @@
+/* Universal Selector */
 
-    /* Universal Selector */
-    
-    * {
-        box-sizing: border-box;
-        border-style: solid;
-        border-width: 0;
-    }
-    /* style for the location form */
-    
+* {
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0;
+}
 
 
-    .pick-up {
-        margin-top: 80px;
-        text-align: center;
-    }
+/* style for the location form */
 
-    /* style for the desination form */
-
-
-    
-    .drop-off {
-        margin-top: 50px;
-        text-align: center;
-    }
-
-    /* syntax for form input */
+.pick-up {
+    margin-top: 80px;
+    text-align: center;
+}
 
 
-    
-    input {
-        width: 400px;
-        height: 80px;
-    }
+/* style for the desination form */
 
-    /* syntax for the text inside the input form */
-
-    
-    input[type=text] {
-        text-align: center;
-        font-size: 30px;
-    }
-
-    /* style for headings on the site */
-    
-    h2 {
-        color: white;
-        text-align: center;
-        margin-top: 80px;
-        font-size: 50px;
-        background: rgb(2, 160, 2);
-        padding: 0.5rem;
-        border-color: black;
-        border-radius: 22px;
-        border-width: 2px;
-        text-decoration: none;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        max-width: 900px;
-        padding-inline-start: 1.5rem;
-        padding-inline-end: 1.5rem;
-    }
-    /* style for icons on the site */
-    
-    .icon {
-        text-align: center;
-        padding-top: 10px;
-    }
-    /* styling the icons buttons */
-    
-    .btn {
-        background-color: rgb(2, 160, 2);
-        border-color: black;
-
-    
-    h2 {
-        text-align: center;
-        margin-top: 80px;
-        font-size: 50px;
-    }
-    
-    .icon {
-        text-align: center;
-    }
-    
-    .btn {
-        background-color: rgb(2, 160, 2);
-        border: none;
-
-        color: white;
-        padding: 12px 16px;
-        font-size: 16px;
-        cursor: pointer;
-
-        border-radius: 10px;
-        border-width: 2px;
-    }
-    /* syntax for once user hovers over icons */
-
-        border-radius: 3px;
-    }
-
-    
-    .btn:focus {
-        background-color: rgb(250, 95, 22);
-    }
-    /* styling the results button */
+.drop-off {
+    margin-top: 50px;
+    text-align: center;
+}
 
 
-    
-    #btn1 {
-        background-color: rgb(2, 160, 2);
-        border-radius: 3px;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 50px;
-        margin-top: 50px;
+/* syntax for form input */
 
-        border: solid black 2px;
-        border-radius: 10px;
-    }
-    /* syntax for once user hovers over results */
+input {
+    width: 400px;
+    height: 80px;
+}
 
-    }
 
-    
-    #btn1:hover {
-        background-color: rgb(95, 255, 95);
-    }
+/* syntax for the text inside the input form */
 
-    /* centering the results button */
-    
-    .results {
-        text-align: center;
-        padding-top: 40px;
-    }
-    /* styling the results shown on site */
-    
-    #calulationShown {
-        color: white;
-        background-color: rgb(2, 160, 2);
-        padding-top: 60px;
-        border: solid black 2px;
-        border-radius: 10px;
-        max-width: 200px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        padding-inline-start: 1.5rem;
-        padding-inline-end: 1.5rem;
-    }
+input[type=text] {
+    text-align: center;
+    font-size: 30px;
+}
 
-    
-    .results {
-        text-align: center;
-    }
 
+/* style for headings on the site */
+
+h2 {
+    color: white;
+    text-align: center;
+    margin-top: 80px;
+    font-size: 50px;
+    background: rgb(2, 160, 2);
+    padding: 0.5rem;
+    border-color: black;
+    border-radius: 22px;
+    border-width: 2px;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 900px;
+    padding-inline-start: 1.5rem;
+    padding-inline-end: 1.5rem;
+}
+
+
+/* style for icons on the site */
+
+.icon {
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+/* styling the icons buttons */
+
+.btn {
+    background-color: rgb(2, 160, 2);
+    border-color: black;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    border-width: 2px;
+}
+
+
+/* syntax for once user hovers over icons */
+
+.btn:hover {
+    background-color: rgb(95, 255, 95);
+}
+
+
+/* styling the results button */
+
+#btn1 {
+    background-color: rgb(2, 160, 2);
+    border-radius: 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 50px;
+    margin-top: 50px;
+    border: solid black 2px;
+    border-radius: 10px;
+}
+
+
+/* syntax for once user hovers over results */
+
+#btn1:hover {
+    background-color: rgb(95, 255, 95);
+}
+
+
+/* centering the results button */
+
+.results {
+    text-align: center;
+    padding-top: 40px;
+}
+
+
+/* styling the results shown on site */
+
+#calulationShown {
+    color: white;
+    background-color: rgb(2, 160, 2);
+    padding-top: 60px;
+    border: solid black 2px;
+    border-radius: 10px;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-inline-start: 1.5rem;
+    padding-inline-end: 1.5rem;
+}
