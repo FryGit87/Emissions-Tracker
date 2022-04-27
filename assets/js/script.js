@@ -222,6 +222,8 @@ function renderTrips() {
     //li.appendChild(button);
     tripsList.appendChild(li);
   }
+  
+  
 }
 
 //PRODUCES A DISTANCE FROM THE COORDS
