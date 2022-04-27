@@ -69,8 +69,8 @@
     }
     /* syntax for once user hovers over icons */
     
-    .btn:hover {
-        background-color: rgb(95, 255, 95);
+    .btn:focus {
+        background-color: rgb(250, 95, 22);
     }
     /* styling the results button */
     
