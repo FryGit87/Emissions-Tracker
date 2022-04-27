@@ -1,3 +1,4 @@
+
     /* Universal Selector */
     
     * {
@@ -7,28 +8,39 @@
     }
     /* style for the location form */
     
+
+
     .pick-up {
         margin-top: 80px;
         text-align: center;
     }
+
     /* style for the desination form */
+
+
     
     .drop-off {
         margin-top: 50px;
         text-align: center;
     }
+
     /* syntax for form input */
+
+
     
     input {
         width: 400px;
         height: 80px;
     }
+
     /* syntax for the text inside the input form */
+
     
     input[type=text] {
         text-align: center;
         font-size: 30px;
     }
+
     /* style for headings on the site */
     
     h2 {
@@ -60,19 +72,42 @@
     .btn {
         background-color: rgb(2, 160, 2);
         border-color: black;
+
+    
+    h2 {
+        text-align: center;
+        margin-top: 80px;
+        font-size: 50px;
+    }
+    
+    .icon {
+        text-align: center;
+    }
+    
+    .btn {
+        background-color: rgb(2, 160, 2);
+        border: none;
+
         color: white;
         padding: 12px 16px;
         font-size: 16px;
         cursor: pointer;
+
         border-radius: 10px;
         border-width: 2px;
     }
     /* syntax for once user hovers over icons */
+
+        border-radius: 3px;
+    }
+
     
     .btn:focus {
         background-color: rgb(250, 95, 22);
     }
     /* styling the results button */
+
+
     
     #btn1 {
         background-color: rgb(2, 160, 2);
@@ -84,14 +119,19 @@
         display: inline-block;
         font-size: 50px;
         margin-top: 50px;
+
         border: solid black 2px;
         border-radius: 10px;
     }
     /* syntax for once user hovers over results */
+
+    }
+
     
     #btn1:hover {
         background-color: rgb(95, 255, 95);
     }
+
     /* centering the results button */
     
     .results {
@@ -113,3 +153,9 @@
         padding-inline-start: 1.5rem;
         padding-inline-end: 1.5rem;
     }
+
+    
+    .results {
+        text-align: center;
+    }
+

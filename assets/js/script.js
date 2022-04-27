@@ -56,13 +56,85 @@ async function getDirections(start, end) {
     return distance;
   }
 }
+
+var emission_factor='empty';
+var flight ="passenger_flight-route_type_domestic-aircraft_type_na-distance_na-class_na-rf_included";
+var car ="passenger_vehicle-vehicle_type_automobile-fuel_source_na-distance_na-engine_size_na";
+var bus ="passenger_vehicle-vehicle_type_bus-fuel_source_na-distance_na-engine_size_na";
+var bike ="passenger_vehicle-vehicle_type_bicycle-fuel_source_na-distance_na-engine_size_na";
+var rail="passenger_train-route_type_national_rail-fuel_source_na";
+var EV="commercial_vehicle-vehicle_type_lcv-fuel_source_bev-engine_size_small-vehicle_age_post_2015-vehicle_weight_na";
+var ferry="passenger_ferry-route_type_na-fuel_source_na";
+
+let ferryBtn = document.getElementById("ferry");
+ferryBtn.addEventListener("click", ferryfunction);
+ferryBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+});
+function ferryfunction() {
+   emission_factor= ferry;
+}
+
+let EVBtn = document.getElementById("EV");
+EVBtn.addEventListener("click", EVfunction);
+EVBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+});
+function EVfunction() {
+   emission_factor= EV;
+}
+
+let bikeBtn = document.getElementById("bike");
+bikeBtn.addEventListener("click", bikefunction);
+bikeBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+});
+function bikefunction() {
+   emission_factor= bike;
+}
+
+let carBtn = document.getElementById("car");
+carBtn.addEventListener("click", carfunction);
+carBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+});
+function carfunction() {
+   emission_factor= car;
+}
+
+let busBtn = document.getElementById("bus");
+busBtn.addEventListener("click", busfunction);
+busBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+});
+function busfunction() {
+   emission_factor= bus;
+}
+
+let flightBtn = document.getElementById("flight");
+flightBtn.addEventListener("click", flightfunction);
+flightBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+});
+function flightfunction() {
+   emission_factor= flight;
+}
+
+let railBtn = document.getElementById("rail");
+railBtn.addEventListener("click", railfunction);
+railBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+});
+function railfunction() {
+   emission_factor= rail;
+}
+
 async function getEmissions(tripDist) {
   let requestUrl = "https://beta3.api.climatiq.io/estimate";
   let numericTripDist = +tripDist;
 
   let emissionParameters = {
-    emission_factor:
-      "passenger_vehicle-vehicle_type_automobile-fuel_source_na-distance_na-engine_size_na",
+    emission_factor,
     parameters: {
       passengers: 4,
       distance: numericTripDist,
@@ -94,8 +166,12 @@ async function buttonClick() {
   let endCoords = await getEndCoords();
   let tripDist = await getDirections(startCoords, endCoords);
   let calculateCarbon = await getEmissions(tripDist);
+  
+  if (emission_factor!='empty'){
   console.log(calculateCarbon);
-  document.getElementById("calulationShown").innerHTML = calculateCarbon;
+  document.getElementById("calulationShown").innerHTML = Math.round(calculateCarbon)/1000 + ' tons CO2e of GHG emissions';}
+  else {
+    document.getElementById("calulationShown").innerHTML = 'Please select a transport!'}
 }
 
 //PRODUCES A DISTANCE FROM THE COORDS
