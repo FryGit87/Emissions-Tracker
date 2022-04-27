@@ -171,7 +171,7 @@ async function buttonClick() {
   console.log(calculateCarbon);
   document.getElementById("calulationShown").innerHTML = Math.round(calculateCarbon)/1000 + ' tons CO2e of GHG emissions';}
   else {
-    document.getElementById("calulationShown").innerHTML = 'Please a transport!'}
+    document.getElementById("calulationShown").innerHTML = 'Please select a transport!'}
 }
 
 //PRODUCES A DISTANCE FROM THE COORDS
