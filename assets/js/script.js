@@ -8,11 +8,15 @@ let apiKey = "5b3ce3597851110001cf624887417583949f471aae818ebeb12df5db";
 let transportType = "driving-car";
 let startPoint = "";
 let endPoint = "";
+let tripsHistory = JSON.parse(localStorage.getItem("trips")) || [];
 
 let startInput = document.getElementById("start-input");
 // let startInputUpdated = encodeURI(startInput);
 let endInput = document.getElementById("end-input");
 // let endInputUpdated = encodeURI(endInput);
+
+var tripsList = document.querySelector("#trips-list");
+var tripsCountSpan = document.querySelector("#trips-count");
 
 //PRODUCES THE START POINT (LAT/LON)FOR USER
 async function getStartCoords() {
@@ -57,14 +61,19 @@ async function getDirections(start, end) {
   }
 }
 
-var emission_factor='empty';
-var flight ="passenger_flight-route_type_domestic-aircraft_type_na-distance_na-class_na-rf_included";
-var car ="passenger_vehicle-vehicle_type_automobile-fuel_source_na-distance_na-engine_size_na";
-var bus ="passenger_vehicle-vehicle_type_bus-fuel_source_na-distance_na-engine_size_na";
-var bike ="passenger_vehicle-vehicle_type_bicycle-fuel_source_na-distance_na-engine_size_na";
-var rail="passenger_train-route_type_national_rail-fuel_source_na";
-var EV="commercial_vehicle-vehicle_type_lcv-fuel_source_bev-engine_size_small-vehicle_age_post_2015-vehicle_weight_na";
-var ferry="passenger_ferry-route_type_na-fuel_source_na";
+var emission_factor = "empty";
+var flight =
+  "passenger_flight-route_type_domestic-aircraft_type_na-distance_na-class_na-rf_included";
+var car =
+  "passenger_vehicle-vehicle_type_automobile-fuel_source_na-distance_na-engine_size_na";
+var bus =
+  "passenger_vehicle-vehicle_type_bus-fuel_source_na-distance_na-engine_size_na";
+var bike =
+  "passenger_vehicle-vehicle_type_bicycle-fuel_source_na-distance_na-engine_size_na";
+var rail = "passenger_train-route_type_national_rail-fuel_source_na";
+var EV =
+  "commercial_vehicle-vehicle_type_lcv-fuel_source_bev-engine_size_small-vehicle_age_post_2015-vehicle_weight_na";
+var ferry = "passenger_ferry-route_type_na-fuel_source_na";
 
 let ferryBtn = document.getElementById("ferry");
 ferryBtn.addEventListener("click", ferryfunction);
@@ -72,7 +81,7 @@ ferryBtn.addEventListener("click", (event) => {
   event.preventDefault();
 });
 function ferryfunction() {
-   emission_factor= ferry;
+  emission_factor = ferry;
 }
 
 let EVBtn = document.getElementById("EV");
@@ -81,7 +90,7 @@ EVBtn.addEventListener("click", (event) => {
   event.preventDefault();
 });
 function EVfunction() {
-   emission_factor= EV;
+  emission_factor = EV;
 }
 
 let bikeBtn = document.getElementById("bike");
@@ -90,7 +99,7 @@ bikeBtn.addEventListener("click", (event) => {
   event.preventDefault();
 });
 function bikefunction() {
-   emission_factor= bike;
+  emission_factor = bike;
 }
 
 let carBtn = document.getElementById("car");
@@ -99,7 +108,7 @@ carBtn.addEventListener("click", (event) => {
   event.preventDefault();
 });
 function carfunction() {
-   emission_factor= car;
+  emission_factor = car;
 }
 
 let busBtn = document.getElementById("bus");
@@ -108,7 +117,7 @@ busBtn.addEventListener("click", (event) => {
   event.preventDefault();
 });
 function busfunction() {
-   emission_factor= bus;
+  emission_factor = bus;
 }
 
 let flightBtn = document.getElementById("flight");
@@ -117,7 +126,7 @@ flightBtn.addEventListener("click", (event) => {
   event.preventDefault();
 });
 function flightfunction() {
-   emission_factor= flight;
+  emission_factor = flight;
 }
 
 let railBtn = document.getElementById("rail");
@@ -126,7 +135,7 @@ railBtn.addEventListener("click", (event) => {
   event.preventDefault();
 });
 function railfunction() {
-   emission_factor= rail;
+  emission_factor = rail;
 }
 
 async function getEmissions(tripDist) {
@@ -166,12 +175,53 @@ async function buttonClick() {
   let endCoords = await getEndCoords();
   let tripDist = await getDirections(startCoords, endCoords);
   let calculateCarbon = await getEmissions(tripDist);
-  
-  if (emission_factor!='empty'){
-  console.log(calculateCarbon);
-  document.getElementById("calulationShown").innerHTML = Math.round(calculateCarbon)/1000 + ' tons CO2e of GHG emissions';}
-  else {
-    document.getElementById("calulationShown").innerHTML = 'Please a transport!'}
+
+  if (emission_factor != "empty") {
+    console.log(calculateCarbon);
+    document.getElementById("calulationShown").innerHTML =
+      Math.round(calculateCarbon) / 1000 + " tons CO2e of GHG emissions";
+  } else {
+    document.getElementById("calulationShown").innerHTML =
+      "Please a transport!";
+  }
+
+  //setting local storage
+  var tripEmission = {
+    vehicle: emission_factor,
+    distance: tripDist,
+    emissions: calculateCarbon + " KG C02-E",
+  };
+
+  tripsHistory.push(tripEmission);
+  localStorage.setItem("trips", JSON.stringify(tripsHistory));
+  console.log(tripsHistory);
+  renderTrips();
+}
+
+// The following function renders items in a todo list as <li> elements
+function renderTrips() {
+  // Clear todoList element and update todoCountSpan
+  tripsList.innerHTML = "";
+  tripsCountSpan.textContent = tripsHistory.length;
+
+  // Render a new li for each todo
+  for (var i = 0; i < tripsHistory.length; i++) {
+    var trip = tripsHistory[i];
+    console.log(trip);
+    console.log(JSON.stringify(trip));
+
+    var li = document.createElement("li");
+    li.textContent = `Trip ${i + 1} - vehicle: ${trip.vehicle}, Distance: ${
+      trip.distance
+    }, Carbon Emissions: ${trip.emissions}`;
+    li.setAttribute("trips", i);
+
+    // var button = document.createElement("button");
+    // button.textContent = "Complete ✔️";
+
+    //li.appendChild(button);
+    tripsList.appendChild(li);
+  }
 }
 
 //PRODUCES A DISTANCE FROM THE COORDS
@@ -188,7 +238,7 @@ resultsBtn.addEventListener("click", (event) => {
 //   let tripDist = await getDirections(startCoords, endCoords);
 // })();
 // --------------------------------------------------------------------------------------------------
-//-----------------------------------------EMISSION API CODE-----------------------------------------
+//----------------------------------------- PAST EMISSION API CODE-----------------------------------------
 // --------------------------------------------------------------------------------------------------
 
 //   let data = {
