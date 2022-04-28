@@ -85,7 +85,7 @@ h2 {
 
 /* syntax for once user hovers over icons */
 
-.btn:hover {
+.btn:focus {
     background-color: rgb(95, 255, 95);
 }
 
